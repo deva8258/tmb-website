@@ -1,0 +1,542 @@
+</think>```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track My Bus (TMB) - Khare Energy Replica</title>
+    <!-- Google Fonts for Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2d175f;
+            background-color: #fff;
+        }
+
+        /* Header styles */
+        header {
+            background: linear-gradient(135deg, #01327e 0%, #014a9e 50%, #136a8a 100%);
+            color: #ffffff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        /* Logo in header - replace src with your logo image */
+        .logo img {
+            height: 40px; /* Adjust size as needed */
+            margin-right: 10px;
+        }
+        .logo-text {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* Navigation styles */
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #00aaff;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/back.png') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background-color: #00aaff;
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0088cc;
+        }
+
+        /* General section styles */
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 2.5em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        .section-title p {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        /* Redesigned About Us section - more creative with cards and animations */
+        .about {
+            background-color: #f9f9f9;
+            position: relative;
+            overflow: hidden;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); /* Indian culture watermark */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05; /* Very low opacity */
+            z-index: 0;
+        }
+        .about-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-around;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        .founder, .co-founder {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+            text-align: center;
+            width: 45%;
+            min-width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .founder:hover, .co-founder:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .founder img, .co-founder img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Circular cutout */
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #00aaff;
+        }
+        .founder h3, .co-founder h3 {
+            font-size: 1.5em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        .founder p, .co-founder p {
+            font-size: 1em;
+            color: #666;
+        }
+        .about-description {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* Redesigned Our Mission section - centered, quote-style, with icons and no image */
+        .mission {
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .mission::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); /* Indian culture watermark */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05; /* Very low opacity */
+            z-index: 0;
+        }
+        .mission-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .mission-quote {
+            font-size: 1.2em;
+            font-weight: 300;
+            color: #00aaff;
+            margin-bottom: 30px;
+            
+        }
+        .mission-text {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 40px;
+        }
+        .mission-goals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .goal-item {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .goal-item:hover {
+            transform: translateY(-5px);
+        }
+        .goal-item h4 {
+            font-size: 1.3em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        .goal-item p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        /* Career section with form */
+        .career {
+            background-color: #f9f9f9;
+        }
+        .career-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .career-form h3 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .career-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00aaff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .career-form button:hover {
+            background-color: #0088cc;
+        }
+
+        /* Contact section - image removed */
+        .contact {
+            background-color: #fff;
+        }
+        .contact-content {
+            text-align: center;
+        }
+        .contact-content p {
+            font-size: 1.2em;
+        }
+        .contact-content a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .footer-section {
+            width: 30%;
+            margin: 20px 0;
+        }
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #00aaff;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin: 10px 0;
+        }
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer-section ul li a:hover {
+            color: #00aaff;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 20px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .founder, .co-founder {
+                width: 100%;
+            }
+            .mission-goals {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                flex-direction: column;
+            }
+            .footer-section {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <!-- Small logo image - replace src with your logo -->
+                
+                <span class="logo-text">Track My Bus </span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#mission">What We Do</a></li>
+                    <li><a href="#career">Career</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home/Hero section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Real-time Bus Tracking</h1>
+            <p>Track your bus live. Reduce waiting time. Improve daily commuting experience.</p>
+            <a href="#" class="btn">Coming Soon on Android & iOS</a>
+        </div>
+    </section>
+
+    <!-- Redesigned About Us section - added cards with hover effects, watermark, and centered description -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <p>Meet the team behind Track My Bus (TMB)</p>
+            </div>
+            <div class="about-content">
+                <div class="founder">
+                    <!-- Founder image - replace src -->
+                    <img src="F:\blackbos ai\images\dev1.png" alt="Founder">
+                    <h3>Dev Shrivastava</h3>
+                    <p>Founder</p>
+                </div>
+                <div class="co-founder">
+                    <!-- Co-founder image - replace src -->
+                    <img src="F:\blackbos ai\images\krishna.jpeg" alt="Co-Founder">
+                    <h3>Krishna Agarwal</h3>
+                    <p>Co-Founder</p>
+                </div>
+            </div>
+            <div class="about-description">
+                <p>Founded by engineering students, TMB is driven by the vision to digitally transform how buses are tracked and managed in India. We combine hardware and software to create a reliable transport intelligence platform.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Redesigned Our Mission section - centered quote, goals in grid cards, no image -->
+    <section id="mission" class="mission">
+        <div class="container">
+            <div class="section-title">
+                <h2>What We Do</h2>
+                <p>Track My Bus is building a centralized digital platform for real-time bus tracking across India.</p> 
+                <p>We connect buses, operators, and passengers through a single intelligent system that provides accurate real-time location and reliable travel information.
+                    TMB supports all types of buses and uses its own GPS devices installed in each vehicle to transmit live data to secure cloud servers.
+                    Passengers track buses through the TMB mobile app, while operators monitor and manage their fleets using a dedicated dashboard.</p>
+            </div>
+            <div class="mission-content">
+                <div class="mission-quote">
+                    "Our mission is to modernize bus transportation in India by delivering accurate tracking, better operational efficiency for operators, and a stress-free travel experience for passengers."
+                </div>
+                <div class="mission-text">
+                    Our platform is designed to deliver
+                </div>
+                <div class="mission-goals">
+                    <div class="goal-item">
+                        <h4>Enhance Passenger Safety</h4>
+                        <p>Provide real-time tracking for safer travel experiences.</p>
+                    </div>
+                    <div class="goal-item">
+                        <h4>Optimize Fleet Operations</h4>
+                        <p>Help operators manage and monitor their buses efficiently.</p>
+                    </div>
+                    <div class="goal-item">
+                        <h4>Promote Sustainable Travel</h4>
+                        <p>Encourage better planning and reduce unnecessary emissions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career section with form -->
+    <section id="career" class="career">
+        <div class="container">
+            <div class="section-title">
+                <h2>Career</h2>
+                <p>Join our team</p>
+            </div>
+            <form class="career-form" action="mailto:devshrivastava831@gmail.com" method="post" enctype="text/plain">
+                <h3>Apply Now</h3>
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <button type="submit">Send Application</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact section - image removed -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p>Get in touch with us</p>
+            </div>
+            <div class="contact-content">
+                <p>Email: <a href="mailto:devshrivastava831@gmail.com">devshrivastava831@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Track My Bus (TMB)</h3>
+                <p>Real-time bus tracking for safer, smarter, and more reliable travel.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#mission">What We Do</a></li>
+                    <li><a href="#career">Career</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: devshrivastava831@gmail.com</p>
+            </div>
+        </div>
+        <p>&copy; 2025 Track My Bus
